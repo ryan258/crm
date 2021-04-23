@@ -47,3 +47,25 @@ export const getContactWithID = (req, res) => {
     res.json(contact)
   })
 }
+
+// now we need to go to our routes
+
+export const updateContact = (req, res) => {
+  // .findOneAndUpdate(a, b, c, d)
+  // - a - object of options to get find by
+  // - b - req.body - the data we want to update
+  // - c - pass some options
+  //     - new: true - will tell the db to return the new object, the UPDATED contact - false would return the old obj, not the updated one
+  //     - useFindAndModify: false - this will allow us to use most recent functions - no deprecation flag errors
+  // - d - action function
+  Contact.findOneAndUpdate({ _id: req.params.contactID }, req.body, { new: true, useFindAndModify: false }, (err, contact) => {
+    if (err) {
+      // res.send(err)
+      console.log(err)
+    }
+    // otherwise, send data as json to the db
+    res.json(contact)
+  })
+}
+
+// now we need to go to our routes and use this in the PUT route
