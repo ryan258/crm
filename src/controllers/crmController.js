@@ -69,3 +69,16 @@ export const updateContact = (req, res) => {
 }
 
 // now we need to go to our routes and use this in the PUT route
+
+export const deleteContact = (req, res) => {
+  Contact.remove({ _id: req.params.contactID }, (err, contact) => {
+    if (err) {
+      // res.send(err)
+      console.log(err)
+    }
+    // otherwise, send data as json to the db
+    res.json({ message: 'successfully deleted contact! 👻' })
+  })
+}
+
+// now we need to go to our routes and use this in the PUT route
