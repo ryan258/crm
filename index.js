@@ -18,6 +18,10 @@ app.use(bodyParser.json())
 
 routes(app, routes)
 
+// serving images from /public
+// - don't put anything that executes code because the browser could have an issue with that
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.send(`Node and Express server running on port ${PORT} 👻`)
 })
