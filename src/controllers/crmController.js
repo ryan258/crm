@@ -20,3 +20,17 @@ export const addNewContact = (req, res) => {
 }
 
 // now we need to pass this to the routes to use this in the POST method
+
+export const getContacts = (req, res) => {
+  // use the Contacts database to find something
+  Contact.find({}, (err, contact) => {
+    if (err) {
+      // res.send(err)
+      console.log(err)
+    }
+    // otherwise, send data as json to the db
+    res.json(contact)
+  })
+}
+
+// now we need to go to our routes
