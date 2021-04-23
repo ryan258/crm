@@ -2,11 +2,6 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-// we can take
-// - type
-// - required
-// - defaults - "if no data, default to this"
-
 export const ContactSchema = new Schema({
   firstName: {
     type: String,
