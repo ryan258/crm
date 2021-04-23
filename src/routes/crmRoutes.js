@@ -3,14 +3,25 @@ import { addNewContact, deleteContact, getContacts, getContactWithID, updateCont
 const routes = (app) => {
   app
     .route('/contact')
+    // get all contacts
     .get((req, res, next) => {
+      // middleware
       console.log(`Request from: ${req.originalUrl}`)
       console.log(`Request type: ${req.method}`)
       next()
     }, getContacts)
+    // post endpoint
     .post(addNewContact)
 
-  app.route('/contact/:contactID').get(getContactWithID).put(updateContact).delete(deleteContact)
+  // specific contact endpoint
+  app
+    .route('/contact/:contactID')
+    // get specific contact endpoint
+    .get(getContactWithID)
+    // update specific contact end point
+    .put(updateContact)
+    // delete specific contact end point
+    .delete(deleteContact)
 }
 
 export default routes
