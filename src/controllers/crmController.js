@@ -34,3 +34,16 @@ export const getContacts = (req, res) => {
 }
 
 // now we need to go to our routes
+
+export const getContactWithID = (req, res) => {
+  // when you get the request object you get a whole bunch of info w/ it... like the body, which has all that data, plus metadata, ie params!
+  //! contactID will come from the :contactID  we see in crmRoutes.js's PUT & DELETE routes
+  Contact.findById(req.params.contactID, (err, contact) => {
+    if (err) {
+      // res.send(err)
+      console.log(err)
+    }
+    // otherwise, send data as json to the db
+    res.json(contact)
+  })
+}
